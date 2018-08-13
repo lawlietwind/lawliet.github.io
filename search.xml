@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Two Sum]]></title>
+    <url>%2Flawliet.github.io%2F2018%2F08%2F13%2FTwo-Sum%2F</url>
+    <content type="text"><![CDATA[题目​ Given an array of integers, return indices of the two numbers such that they add up to a specific target. ​ You may assume that each input would have exactly one solution, and you may not use the same element twice. ​ Example: 1234Given nums = [2, 7, 11, 15], target = 9,Because nums[0] + nums[1] = 2 + 7 = 9,return [0, 1]. 解析哈希表使用 O(N) 空间复杂度存储数据，并且以 O(1) 时间复杂度求解问题。 ​ Java 中的 HashSet 用来存储一个集合，可以通过查找元素判断是否在集合中。举个例子，如果我们只需要判断的元素有限，并且范围不大，那么可以用一个布尔数组来存储一个元素是否存在。例如对于只有小写字符的元素，就可以用一个长度为 26 的布尔数组来存储一个字符集合，使得空间复杂度降低为 O(1)。 Java 中的 HashMap 主要用于映射关系，从而把两个元素联系起来。HashMap 也可以用来对元素进行计数统计，此时键为元素，值为计数。和 HashSet 类似，如果元素有穷并且范围不大，可以用整型数组来进行统计。在对一个内容进行压缩或者其它转换时，利用 HashMap 可以把原始内容和转换后的内容联系起来。 ​ 对于这道题而言，如果我们采用普通的遍历判断，比如： 12345678910public int[] twoSum(int[] nums, int target) &#123; for (int i = 0; i &lt; nums.length; i++) &#123; for (int j = i + 1; j &lt; nums.length; j++) &#123; if (nums[j] == target - nums[i]) &#123; return new int[] &#123; i, j &#125;; &#125; &#125; &#125; throw new IllegalArgumentException("No two sum solution");&#125; ​ 那么时间间复杂度将会达到O(n^2^)，而空间复杂度为O(1)。不过，我们心里会想，怎么会这么简单呢？如果想更进一步找到更好的解法，可以先对数组进行排序，然后使用双指针方法或者二分查找方法。这样做的时间复杂度为 O(NlogN)，空间复杂度为 O(1)。 ​ 用 HashMap 存储数组元素和索引的映射，在访问到 nums[i] 时，判断 HashMap 中是否存在 target - nums[i]，如果存在说明 target - nums[i] 所在的索引和 i 就是要找的两个数。该方法的时间复杂度为 O(N)，空间复杂度为 O(N)，使用空间来换取时间。 1234567891011public int[] twoSum(int[] nums, int target) &#123; HashMap&lt;Integer, Integer&gt; indexForNum = new HashMap&lt;&gt;(); for (int i = 0; i &lt; nums.length; i++) &#123; if (indexForNum.containsKey(target - nums[i])) &#123; return new int[]&#123;indexForNum.get(target - nums[i]), i&#125;; &#125; else &#123; indexForNum.put(nums[i], i); &#125; &#125; return null;&#125; ​ 此题AC并不难，但是最后这种解法也只是超过66%左右，但是这已经足够我们学习哈希表了。]]></content>
+      <categories>
+        <category>LeetCode题解</category>
+      </categories>
+      <tags>
+        <tag>哈希表</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Hello World]]></title>
     <url>%2Flawliet.github.io%2F2018%2F08%2F13%2Fhello-world%2F</url>
     <content type="text"><![CDATA[开通此博客之初，是为了更好地记录自己生活的点滴，我们活得如此有趣，总会有一些话想对你说。一开始我会记录自己在LeetCode上的学习经历，之后会发生什么，我也不知道。]]></content>
