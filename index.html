@@ -413,23 +413,15 @@
 
       
         
-          
-            <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a><strong>题目</strong></h3><p>​    Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p>
-<p>​    You may assume that each input would have exactly one solution, and you may not use the same element twice.</p>
-<p>​    Example:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Given nums = [2, 7, 11, 15], target = 9,</span><br><span class="line"></span><br><span class="line">Because nums[0] + nums[1] = 2 + 7 = 9,</span><br><span class="line">return [0, 1].</span><br></pre></td></tr></table></figure>
-<h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a><strong>解析</strong></h3><h4 id="哈希表使用-O-N-空间复杂度存储数据，并且以-O-1-时间复杂度求解问题。"><a href="#哈希表使用-O-N-空间复杂度存储数据，并且以-O-1-时间复杂度求解问题。" class="headerlink" title="哈希表使用 O(N) 空间复杂度存储数据，并且以 O(1) 时间复杂度求解问题。"></a>哈希表使用 O(N) 空间复杂度存储数据，并且以 O(1) 时间复杂度求解问题。</h4><ul>
-<li>​    Java 中的 <strong>HashSet</strong> 用来存储一个集合，可以通过查找元素判断是否在集合中。举个例子，如果我们只需要判断的元素有限，并且范围不大，那么可以用一个布尔数组来存储一个元素是否存在。例如对于只有小写字符的元素，就可以用一个长度为 26 的布尔数组来存储一个字符集合，使得空间复杂度降低为 O(1)。</li>
-<li>Java 中的 <strong>HashMap</strong> 主要用于映射关系，从而把两个元素联系起来。HashMap 也可以用来对元素进行计数统计，此时键为元素，值为计数。和 HashSet 类似，如果元素有穷并且范围不大，可以用整型数组来进行统计。在对一个内容进行压缩或者其它转换时，利用 HashMap 可以把原始内容和转换后的内容联系起来。</li>
-</ul>
-<p>​    对于这道题而言，如果我们采用普通的遍历判断，比如：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[j] == target - nums[i]) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123; i, j &#125;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"No two sum solution"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>​    那么时间间复杂度将会达到O(n^2^)，而空间复杂度为O(1)。不过，我们心里会想，怎么会这么简单呢？如果想更进一步找到更好的解法，可以先对数组进行排序，然后使用双指针方法或者二分查找方法。这样做的时间复杂度为 O(NlogN)，空间复杂度为 O(1)。</p>
-<p>​    用 HashMap 存储数组元素和索引的映射，在访问到 nums[i] 时，判断 HashMap 中是否存在 target - nums[i]，如果存在说明 target - nums[i] 所在的索引和 i 就是要找的两个数。该方法的时间复杂度为 O(N)，空间复杂度为 O(N)，使用空间来换取时间。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">    HashMap&lt;Integer, Integer&gt; indexForNum = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (indexForNum.containsKey(target - nums[i])) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;indexForNum.get(target - nums[i]), i&#125;;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            indexForNum.put(nums[i], i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>​    此题AC并不难，但是最后这种解法也只是超过66%左右，但是这已经足够我们学习哈希表了。</p>
-
-          
+          <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a><strong>题目</strong></h3><p>​    Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p>
+<p>​    You may assume that each input would have exactly one solution, and you may not use the same element twice.
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/lawliet.github.io/2018/08/13/Two-Sum/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
