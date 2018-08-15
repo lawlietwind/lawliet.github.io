@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Palindrome Number]]></title>
+    <url>%2Flawliet.github.io%2F2018%2F08%2F15%2FPalindrome-Number%2F</url>
+    <content type="text"><![CDATA[题目Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward. Example 1: 12Input: 121Output: true Example 2: 123Input: -121Output: falseExplanation: From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome. Example 3: 123Input: 10Output: falseExplanation: Reads 01 from right to left. Therefore it is not a palindrome. 解析本题要求最好不能使用额外的内存，我们也就不能选择把整数换成字符串再进行反转判断。这道题的思路跟上一题《Reverse Integer》的解法很像，只不过这次我们只需要将整数分为左右两边，右边的进行反转，最后就能进行判断了。 1234567891011public boolean isPalindrome(int x) &#123; if(x &lt; 0 || (x % 10 == 0 &amp;&amp; x != 0))&#123; return false; &#125; int reverse = 0; while(x &gt; reverse)&#123; reverse = reverse * 10 + x % 10; x /= 10; &#125; return x == reverse || x == reverse / 10;&#125; 复杂性分析 时间复杂度：O(log~10~(n)). 因为我们每次递归都会除以10，所以时间复杂度也就会是O(log~10~(n))了。 空间复杂度：O(1).]]></content>
+      <categories>
+        <category>LeetCode题解</category>
+      </categories>
+      <tags>
+        <tag>Easy</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[如果把人生比成一局DOTA，大家现在局势如何？接下来怎么打？]]></title>
     <url>%2Flawliet.github.io%2F2018%2F08%2F14%2F%E5%A6%82%E6%9E%9C%E6%8A%8A%E4%BA%BA%E7%94%9F%E6%AF%94%E6%88%90%E4%B8%80%E5%B1%80DOTA%EF%BC%8C%E5%A4%A7%E5%AE%B6%E7%8E%B0%E5%9C%A8%E5%B1%80%E5%8A%BF%E5%A6%82%E4%BD%95%EF%BC%9F%E6%8E%A5%E4%B8%8B%E6%9D%A5%E6%80%8E%E4%B9%88%E6%89%93%EF%BC%9F%2F</url>
     <content type="text"><![CDATA[我一出生的时候，便看到了樱花纷落的大树下，一群人背对着我走出去。临走前他们却不忘回头跟我说，买个信使，还有，中路补个眼。 我揉了揉眼睛，旁边一个满脸泛金的大叔递给我一个拐杖一样的东西，我很疑惑：为什么给我这个？ 他笑了笑，问我要什么。刚想开口，远处砸来几声怒吼：快来下路保我！ 我艰难站起来，看见自己穿着平时自己最喜欢的衣服，嗯，天空一样的颜色。大叔塞给我一个眼，便把我推了出去。 之后，我只记得天空掠过了一只小鸟，地上也溜过了一只松鼠，接着便天黑了。到处都是刀光剑影，到处都是杀戮的配音，震得我耳鸣。 可是我无能为力，我撑着大叔给我的那根拐杖逃避了一次又一次战斗，回头发觉所有人都躺在血泊中，余一个杀红眼的人，不断嘲笑我。 没有人杀过我，或者说，没有人愿意去在乎这个弱小的身躯。 我很害怕，一出生便被注定杀戮，信仰？快感？ 终于在我耗尽所有力气后，我又回到了大叔身边。这时的樱花树下，已经被马蹄践踏得面目全非，平时喷涌而出的泉水也已了无生机。我再次被推了出去，这次我站在了一个很高的地方，我可以看见一个个从岩浆里面走出来的恶魔，正面目狰狞地如死神一般袭来。 结局显而易见，昔日英雄被斩落马下，家园也被尽拆。但是机会来了，奋战到最后一刻的大哥把所有恶魔都困在了同一个地方。 “快放大！” 这是我听见第一次有人对我抱有希望的呐喊。手中的拐杖亮了起来，天空开始风云变幻，地上的樱花也被扬起，此时所有的恶魔似乎都想努力逃窜。 我在干什么？为什么他们这么怕我？ 难道这样能赢？ 哦， 我记起来了，我叫冰晶室女，我正在召唤一场暴风雪，这样一来，所有的恶魔都将退散。 但是我哭了，暴风雪逐渐消失，世界树在这个时候轰然倒塌，最后记得的时候，我趴在地上哭。 因为我听见一个小恶魔对我说，小姐姐好厉害，我这一生都没看过雪呢。 嗯，我这一生，还没见到你呢。]]></content>
