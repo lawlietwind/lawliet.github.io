@@ -81,7 +81,7 @@
 <meta property="og:site_name" content="Ciaoda说">
 <meta property="og:description" content="题目Given a 32-bit signed integer, reverse digits of an integer.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-14T02:07:51.176Z">
+<meta property="og:updated_time" content="2018-08-16T02:26:22.209Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Reverse Integer">
 <meta name="twitter:description" content="题目Given a 32-bit signed integer, reverse digits of an integer.">
@@ -364,7 +364,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  214
+                  264
                 </span>
               
 
@@ -411,6 +411,12 @@
 <h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a><strong>解析</strong></h3><p>本题主要是取余的应用，通过递归反转整数，到最后取到我们需要的反转值。但是，我们需要考虑到 int 的范围，以防溢出（ -2147483648～2147483647 ）。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(x != <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">int</span> single = x % <span class="number">10</span>;</span><br><span class="line">        x /= <span class="number">10</span>;</span><br><span class="line">        <span class="keyword">if</span> (res &gt; Integer.MAX_VALUE/<span class="number">10</span> || (res == Integer.MAX_VALUE / <span class="number">10</span> &amp;&amp; single &gt; <span class="number">7</span>)) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (res &lt; Integer.MIN_VALUE/<span class="number">10</span> || (res == Integer.MIN_VALUE / <span class="number">10</span> &amp;&amp; single &lt; -<span class="number">8</span>)) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        res = res * <span class="number">10</span> + single;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>我们首先选择的方法会决定最后得出的结果，如果一开始就想到用递归，那么解出这道题便不会太难，但本题的也只排在35%，以后尽量寻求合理范围的最优解。</p>
+<h3 id="复杂性分析"><a href="#复杂性分析" class="headerlink" title="复杂性分析"></a><strong>复杂性分析</strong></h3><ul>
+<li><p>时间复杂度：O(log~10~(n)). 因为我们每次递归都会除以10，所以时间复杂度也就会是O(log~10~(n))了。</p>
+</li>
+<li><p>空间复杂度：O(1). </p>
+</li>
+</ul>
 
       
     </div>
@@ -530,7 +536,7 @@
               
                 <a href="/lawliet.github.io/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -607,7 +613,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析"><span class="nav-number">2.</span> <span class="nav-text">解析</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析"><span class="nav-number">2.</span> <span class="nav-text">解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复杂性分析"><span class="nav-number">3.</span> <span class="nav-text">复杂性分析</span></a></li></ol></div>
             
 
           </div>
@@ -641,7 +647,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">1.9k</span>
+    <span title="Site words total count">2.5k</span>
   
 </div>
 
