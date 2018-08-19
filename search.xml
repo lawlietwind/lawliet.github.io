@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Merge Two Sorted Lists]]></title>
+    <url>%2Flawliet.github.io%2F2018%2F08%2F19%2FMerge-Two-Sorted-Lists%2F</url>
+    <content type="text"><![CDATA[题目Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists. Example 1: 12Input: 1-&gt;2-&gt;4, 1-&gt;3-&gt;4Output: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4 解析 链表是空节点，或者有一个值和一个指向下一个链表的指针，因此很多链表问题可以用递归来处理。 本题主要是把两个有序的链表归，特殊情况的判断要记得（例如l1为空，或者l2为空）。 1234567891011public ListNode mergeTwoLists(ListNode l1, ListNode l2) &#123; if (l1 == null) return l2; if (l2 == null) return l1; if (l1.val &lt; l2.val) &#123; l1.next = mergeTwoLists(l1.next, l2); return l1; &#125; else &#123; l2.next = mergeTwoLists(l1, l2.next); return l2; &#125;&#125; 本题的排名达到了几乎100%，也就是最优解了。 复杂性分析 时间复杂度：O(S). S 是字符串的长度，我们对每个字符都进行了判断。 空间复杂度：O(2S). 每个单独的字符我们都创建了额外的空间。]]></content>
+      <categories>
+        <category>LeetCode题解</category>
+      </categories>
+      <tags>
+        <tag>Easy</tag>
+        <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Valid Parentheses]]></title>
     <url>%2Flawliet.github.io%2F2018%2F08%2F18%2FValid-Parentheses%2F</url>
     <content type="text"><![CDATA[题目Given a string containing just the characters &#39;(&#39;, &#39;)&#39;, &#39;{&#39;, &#39;}&#39;, &#39;[&#39; and &#39;]&#39;, determine if the input string is valid. An input string is valid if: Open brackets must be closed by the same type of brackets. Open brackets must be closed in the correct order. Note that an empty string is also considered valid. Example 1: 12Input: &quot;()&quot;Output: true Example 2: 12Input: &quot;()[]&#123;&#125;&quot;Output: true Example 3: 12Input: &quot;(]&quot;Output: false Example 4: 12Input: &quot;([)]&quot;Output: false Example 5: 12Input: &quot;&#123;[]&#125;&quot;Output: true 解析本题是有关于栈的问题，将所有括号存进哈希图中，一一对应键值，然后我们先把传入的字符串分为两半，前一半存入栈，后一半与栈的最上面的值做判断，先进后出，判断到最后为栈空就意味着符合题解了。 12345678910111213141516171819202122232425public boolean isValid(String s) &#123; HashMap&lt;Character, Character&gt; map = new HashMap&lt;Character, Character&gt;(); map.put('(', ')'); //这里一定要用单引号，双引号会被认为是String类型 map.put('[', ']'); map.put('&#123;', '&#125;'); Stack&lt;Character&gt; stack = new Stack&lt;Character&gt;(); for (int i = 0; i &lt; s.length(); i++) &#123; char current = s.charAt(i); if (map.keySet().contains(current)) &#123; stack.push(current); &#125; else if (map.values().contains(current)) &#123; if (!stack.empty() &amp;&amp; (map.get(stack.peek()) == current)) &#123; stack.pop(); &#125; else &#123; return false; &#125; &#125; &#125; return stack.empty();&#125; 本题的排名不高，所需要的时间较多，还有优化的空间。 复杂性分析 时间复杂度：O(S). S 是字符串的长度，我们对每个字符都进行了判断。 空间复杂度：O(2S). 每个单独的字符我们都创建了额外的空间。]]></content>
