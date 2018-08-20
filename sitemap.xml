@@ -2,30 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://lawlietwind.github.io/lawliet.github.io/2018/08/19/Merge-Two-Sorted-Lists/</loc>
+    <loc>https://lawlietwind.github.io/lawliet.github.io/2018/08/16/Roman-to-Integer/</loc>
     
-    <lastmod>2018-08-19T10:25:30.727Z</lastmod>
+    <lastmod>2018-08-20T03:30:09.736Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://lawlietwind.github.io/lawliet.github.io/2018/08/18/Valid-Parentheses/</loc>
+    <loc>https://lawlietwind.github.io/lawliet.github.io/2018/08/14/Reverse-Integer/</loc>
     
-    <lastmod>2018-08-18T09:21:07.994Z</lastmod>
+    <lastmod>2018-08-20T03:29:56.654Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lawlietwind.github.io/lawliet.github.io/2018/08/15/Palindrome-Number/</loc>
+    
+    <lastmod>2018-08-20T03:29:46.005Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lawlietwind.github.io/lawliet.github.io/2018/08/13/hello-world/</loc>
+    
+    <lastmod>2018-08-20T03:29:37.147Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://lawlietwind.github.io/lawliet.github.io/2018/08/17/Longest-Common-Prefix/</loc>
     
-    <lastmod>2018-08-18T09:09:25.347Z</lastmod>
+    <lastmod>2018-08-20T03:29:23.963Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://lawlietwind.github.io/lawliet.github.io/2018/08/16/Roman-to-Integer/</loc>
+    <loc>https://lawlietwind.github.io/lawliet.github.io/2018/08/20/Remove-Duplicates-from-Sorted-Array/</loc>
     
-    <lastmod>2018-08-17T01:27:02.343Z</lastmod>
+    <lastmod>2018-08-20T03:28:53.839Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lawlietwind.github.io/lawliet.github.io/2018/08/18/Valid-Parentheses/</loc>
+    
+    <lastmod>2018-08-20T03:20:28.892Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lawlietwind.github.io/lawliet.github.io/2018/08/19/Merge-Two-Sorted-Lists/</loc>
+    
+    <lastmod>2018-08-19T10:25:30.727Z</lastmod>
     
   </url>
   
@@ -40,20 +68,6 @@
     <loc>https://lawlietwind.github.io/lawliet.github.io/2018/08/13/Two-Sum/</loc>
     
     <lastmod>2018-08-16T02:29:22.661Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lawlietwind.github.io/lawliet.github.io/2018/08/14/Reverse-Integer/</loc>
-    
-    <lastmod>2018-08-16T02:26:22.209Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lawlietwind.github.io/lawliet.github.io/2018/08/15/Palindrome-Number/</loc>
-    
-    <lastmod>2018-08-15T15:13:53.210Z</lastmod>
     
   </url>
   
@@ -75,13 +89,6 @@
     <loc>https://lawlietwind.github.io/lawliet.github.io/categories/index.html</loc>
     
     <lastmod>2018-08-13T13:39:11.776Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lawlietwind.github.io/lawliet.github.io/2018/08/13/hello-world/</loc>
-    
-    <lastmod>2018-08-13T10:56:44.503Z</lastmod>
     
   </url>
   
