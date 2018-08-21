@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Remove Element]]></title>
+    <url>%2Flawliet.github.io%2F2018%2F08%2F21%2FRemove-Element%2F</url>
+    <content type="text"><![CDATA[题目Given an array nums and a value val, remove all instances of that value in-place and return the new length. Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory. The order of elements can be changed. It doesn’t matter what you leave beyond the new length. Example 1: 12345Given nums = [3,2,2,3], val = 3,Your function should return length = 2, with the first two elements of nums being 2.It doesn&apos;t matter what you leave beyond the returned length. Example 2: 1234567Given nums = [0,1,2,2,3,0,4,2], val = 2,Your function should return length = 5, with the first five elements of nums containing 0, 1, 3, 0, and 4.Note that the order of those five elements can be arbitrary.It doesn&apos;t matter what values are set beyond the returned length. 解析本题和上一题非常相似，我们可以通过定义两个指针，在同一时间递增，直到 j 到达数组的末尾，新的长度就为 i 。 12345678910public int removeElement(int[] nums, int val) &#123; int i = 0; for (int j = 0; j &lt; nums.length; j++) &#123; if (nums[j] != val) &#123; nums[i] = nums[j]; i++; &#125; &#125; return i;&#125; 本题的排名不高，所需要的时间较多，还有优化的空间。 复杂性分析 时间复杂度：O(n). 假设n是数组的长度。每一个 i 和 j 最多遍历 n 次。 空间复杂度：O(1). 如果我们考虑数组包含很少要删除的元素的情况，当当前元素需要删除时，可以把当前元素和最后一个元素互换，然后删掉最后一个元素。不过最后一个元素也可能是需要删除的元素，所以就需要继续循环，直到当前元素不等于要删除的元素方能跳到下一个位置。 1234567891011121314public int removeElement(int[] nums, int val) &#123; int i = 0; int n = nums.length; while (i &lt; n) &#123; if (nums[i] == val) &#123; nums[i] = nums[n - 1]; // reduce array size by one n--; &#125; else &#123; i++; &#125; &#125; return n;&#125; 复杂性分析 时间复杂度：O(n). i 和 n 都走了 n 次，需要执行操作的元素只有删除的元素，故当需要删除的元素较少时，更有效率。 空间复杂度：O(1).]]></content>
+      <categories>
+        <category>LeetCode题解</category>
+      </categories>
+      <tags>
+        <tag>Easy</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Remove Duplicates from Sorted Array]]></title>
     <url>%2Flawliet.github.io%2F2018%2F08%2F20%2FRemove-Duplicates-from-Sorted-Array%2F</url>
     <content type="text"><![CDATA[题目Given a sorted array nums, remove the duplicates in-place such that each element appear only once and return the new length. Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory. Example 1: 12345Given nums = [1,1,2],Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively.It doesn&apos;t matter what you leave beyond the returned length. Example 1: 12345Given nums = [0,0,1,1,1,2,2,3,3,4],Your function should return length = 5, with the first five elements of nums being modified to 0, 1, 2, 3, and 4 respectively.It doesn&apos;t matter what values are set beyond the returned length. 解析本题比较简单，我们只需要遍历数组进行判断，取出重复的值就行了。 1234567891011public int removeDuplicates(int[] nums) &#123; if (nums.length == 0) return 0; int len = 0; for(int i = 1; i &lt; nums.length; i++)&#123; if(nums[i] != nums[len])&#123; len++; nums[len] = nums[i]; &#125; &#125; return len + 1;&#125; 复杂性分析 时间复杂度：O(n). 假设n是数组的长度。每一个 i 和 j 最多遍历 n 次。 空间复杂度：O(1).]]></content>
