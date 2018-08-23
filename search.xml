@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Search Insert Position]]></title>
+    <url>%2Flawliet.github.io%2F2018%2F08%2F23%2FSearch-Insert-Position%2F</url>
+    <content type="text"><![CDATA[题目Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order. You may assume no duplicates in the array. Example 1: 12Input: [1,3,5,6], 5Output: 2 Example 2: 12Input: [1,3,5,6], 2Output: 1 Example 3: 12Input: [1,3,5,6], 7Output: 4 Example 4: 12Input: [1,3,5,6], 0Output: 0 解析本题可以采用二分查找法，如果没有找到目标元素，我们可以定位在mid之前或之后，这对我们进行查找非常有用。 1234567891011121314151617public int searchInsert(int[] A, int target) &#123; if (A == null || A.length == 0)&#123; return 0; &#125; int l = 0; int r = A.length - 1; while (l &lt;= r)&#123; int mid = (l + r) / 2; if (A[mid] == target) return mid; if (A[mid] &lt; target) l = mid + 1; else r = mid - 1; &#125; return l; &#125; 复杂性分析 时间复杂度：O(log~n~). 空间复杂度：O(1).]]></content>
+      <categories>
+        <category>LeetCode题解</category>
+      </categories>
+      <tags>
+        <tag>Easy</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Implement strStr()]]></title>
     <url>%2Flawliet.github.io%2F2018%2F08%2F22%2FImplement-strStr%2F</url>
     <content type="text"><![CDATA[题目Implement strStr(). Return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack. Example 1: 12Input: haystack = &quot;hello&quot;, needle = &quot;ll&quot;Output: 2 Example 2: 12Input: haystack = &quot;aaaaa&quot;, needle = &quot;bba&quot;Output: -1 解析由于本题不能使用 Java 的 indexOf() 方法，我们需要另外想出办法，比如暴力解法，这是比较适合我们的初级解法。我只需要合理地对字符进行判断，对循环越界的地方进行判定就能很容易得出结果。 123456789101112131415public int strStr(String haystack, String needle) &#123; int start = 0; // 如果剩下的字母不够needle长度就停止遍历 while (start &lt;= haystack.length() - needle.length())&#123; int i = start; int j = 0; while (j &lt; needle.length() &amp;&amp; haystack.charAt(i) == needle.charAt(j))&#123; i++; j++; &#125; if (j == needle.length()) return start; start++; &#125; return -1; &#125; 复杂性分析 时间复杂度：O(n^2^). 空间复杂度：O(1). KMP算法KMP算法是较为高级的算法。它使用一个next数组，这个数组记录了模式串needle自身的前缀和后缀的重复情况。同样是双指针进行匹配，当失配时可以根据这个数组找到应该将模式串向后位移多少位，避免一些重复的比较。具体的解法这里有两篇文章比较好，一篇是详细讲解KMP算法。 如果看完对产生next数组的方法还不太明白，还有一篇是讲解next数组怎么得到的。 1234567891011121314151617181920212223242526272829303132333435363738394041424344public class Solution &#123; public int strStr(String haystack, String needle) &#123; if(needle.length() == 0)&#123; return 0; &#125; int[] next = new int[needle.length()]; // 得到next数组 getNextArr(next, needle); // i是匹配串haystack的指针，j是模式串needle的指针 int i = 0, j = 0; // 双指针开始匹配 while(i &lt; haystack.length() &amp;&amp; j &lt; needle.length())&#123; // 如果j=-1意味着刚刚失配过，下标+1后，下一轮就可以开始匹配各自的第一个了 // 如果指向的字母相同，则下一轮匹配各自的下一个 if(j == -1 || haystack.charAt(i) == needle.charAt(j))&#123; i++; j++; // 如果失配，则将更新j为next[j] &#125; else &#123; j = next[j]; &#125; &#125; return j == needle.length() ? i - j : -1; &#125; private void getNextArr(int[] next, String needle)&#123; // k是前缀中相同部分的末尾，同时也是相同部分的长度，因为长度等于k-0。 // j是后缀的末尾，即后缀相同部分的末尾 int k = -1, j = 0; next[0] = -1; while(j &lt; needle.length() - 1)&#123; // 如果k=-1，说明刚刚失配了，则重新开始计算前缀和后缀相同的长度 // 如果两个字符相等，则在上次前缀和后缀相同的长度加1就行了 if (k == -1 || needle.charAt(j) == needle.charAt(k))&#123; k++; j++; next[j] = k; &#125; else &#123; // 否则，前缀长度缩短为next[k] k = next[k]; &#125; &#125; &#125;&#125; 复杂性分析 时间复杂度：O(N+M). 空间复杂度：O(M).]]></content>
