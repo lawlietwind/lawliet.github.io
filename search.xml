@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Maximum Subarray]]></title>
+    <url>%2Flawliet.github.io%2F2018%2F08%2F30%2FMaximum-Subarray%2F</url>
+    <content type="text"><![CDATA[题目Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum. Example 1: 123Input: [-2,1,-3,4,-1,2,1,-5,4],Output: 6Explanation: [4,-1,2,1] has the largest sum = 6. 解析本题主要是有关数组区间的问题，我们只需循环遍历便能得出最后结果。 123456789101112public int maxSubArray(int[] nums) &#123; if (nums == null || nums.length == 0) &#123; return 0; &#125; int preSum = nums[0]; int maxSum = preSum; for (int i = 1; i &lt; nums.length; i++)&#123; preSum = preSum &gt; 0 ? preSum + nums[i] : nums[i]; maxSum = Math.max(maxSum, preSum); &#125; return maxSum;&#125; 复杂性分析 时间复杂度：O(N). 空间复杂度：O(1).]]></content>
+      <categories>
+        <category>LeetCode题解</category>
+      </categories>
+      <tags>
+        <tag>Easy</tag>
+        <tag>数组区间</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Count and Say]]></title>
     <url>%2Flawliet.github.io%2F2018%2F08%2F24%2FCount-and-Say%2F</url>
     <content type="text"><![CDATA[题目The count-and-say sequence is the sequence of integers with the first five terms as following: 123451. 12. 113. 214. 12115. 111221 1 is read off as &quot;one 1&quot; or 11.11 is read off as &quot;two 1s&quot; or 21.21 is read off as &quot;one 2, then one 1&quot; or 1211. Given an integer n, generate the nth term of the count-and-say sequence. Note: Each term of the sequence of integers will be represented as a string. Example 1: 12Input: 1Output: &quot;1&quot; Example 2: 12Input: 4Output: &quot;1211&quot; 解析本题第一次看见可能有点难以理解，不过只要理解第二序列代表的是前一个序列，就是念出来的序列。举个栗子，11的下一个序列是“2个1”，即21该序列又叫做外观序列，无论如何我们都得将前一个序列元素算出来，才能计算后一个序列元素。当递归至0的时候返回初始数字1。 123456789101112131415161718192021222324252627public String countAndSay(int n) &#123; // 递归尽头返回空或者1 if(n == 0) return ""; if(n == 1) return "1"; // 计算出上一个字符串 String s = countAndSay(n - 1); StringBuilder sb = new StringBuilder(); // 通过记录上次的字符来判断是否重复 char last = s.charAt(0); int cnt = 1; for(int i = 1; i &lt; s.length(); i++)&#123; // 如果重复则计数器加1 if(s.charAt(i) == last)&#123; cnt++; &#125; else &#123; // 否则添加上一个字符，并重置计数器为1 sb.append(cnt); sb.append(last); last = s.charAt(i); cnt = 1; &#125; &#125; // 最后记得把最后一个字符加上 sb.append(cnt); sb.append(last); return sb.toString(); &#125; 复杂性分析 时间复杂度：O(N!). 空间复杂度：O(N). 还有一种循环解法的复杂度也是一样的，只是把迭代改成了循环。 1234567891011121314151617181920212223public String countAndSay(int n) &#123; if(n == 0) return ""; String s = "1"; for(int j = 1; j &lt; n; j++)&#123; StringBuilder sb = new StringBuilder(); char last = s.charAt(0); int cnt = 1; for(int i = 1; i &lt; s.length(); i++)&#123; if(s.charAt(i) == last)&#123; cnt++; &#125; else &#123; sb.append(cnt); sb.append(last); last = s.charAt(i); cnt = 1; &#125; &#125; sb.append(cnt); sb.append(last); s = sb.toString(); &#125; return s;&#125; 这两种解法都能得到最优解。]]></content>
